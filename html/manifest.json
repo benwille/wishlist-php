@@ -1,0 +1,28 @@
+{
+	"dir": "ltr",
+	"lang": "en",
+	"name": "",
+	"scope": "/",
+	"display": "standalone",
+	"start_url": "",
+	"short_name": "",
+	"theme_color": "",
+	"description": "",
+	"orientation": "portrait",
+	"background_color": "",
+	"related_applications": [],
+	"prefer_related_applications": false,
+	"icons": [
+		{
+			"src": "",
+			"sizes": "150x150"
+		},
+		{
+			"src": "",
+			"sizes": "152x152"
+		}
+	],
+	"url": "",
+	"generated": "true",
+	"gcm_sender_id": "BAChtl5gkvraGFFONhcXP8ycsorGN_lBn52IEnyDr8OgqnAUC0UbKhy1RovOOKkVqIXVEZq0xmx_-93NSIKCCcU"
+}
