@@ -5,17 +5,17 @@
 
 
 </div> <!--end container-->
-<footer class="container-fluid mt-5 pt-3 text-light">
+<footer class="container-fluid mt-5 pt-3 text-light bg-primary">
   <div>
   <div class="d-flex">
 
-    <p>Copyright <?php echo date('Y') . ', Ben Wille'; ?></p>
+    <p>Copyright <?php echo date('Y') // TODO: . ', Ben Wille'; ?></p>
 
     <div class="ml-auto">
       <?php
       $end = microtime(true) - $start;
       // echo '(' . number_format($end, 2) . ' seconds)';
-      echo duration($end);
+      // echo duration($end);
       ?>
     </div>
   </div>
