@@ -16,7 +16,6 @@ $pagination = new Pagination($current_page, $per_page, $total_count);
 //use pagination
 
 $sql = "SELECT * FROM /*table*/ ";
-// $sql .= "ORDER BY rank DESC ";
 // $sql .= "LIMIT 1 ";
 $sql .= "LIMIT {$per_page} ";
 $sql .= "OFFSET {$pagination->offset()}";
@@ -26,12 +25,24 @@ $results = DatabaseObject::find_by_sql($sql);
 <div class="row">
 
   <?php foreach ($results as $result) { ?>
-    <div class="col p-2 d-flex justify-content-center" id="<?php echo h(u($result->id)); ?>">
-      <a class="action" href="<?php echo url_for('/src/view.php?id=' . h(u($result->id))); ?>">
-        <img src="<?php echo url_for('images/placeholder.jpg'); ?>" data-src="<?php echo url_for('images/thumbnails/' . str_pad($result->id, 3, '0', STR_PAD_LEFT) . '.png'); ?>" class="lazy" alt="<?php echo h($result->name()); ?>">
-        <!-- <img src="<?php echo url_for('images/thumbnails/' . str_pad($result->id, 3, '0', STR_PAD_LEFT) . '.png'); ?>"  alt="<?php echo h($result->name()); ?>"> -->
-      </a>
-    </div>
+    <div class="col-sm-6">
+            <section class="card mb-5" id="<?php echo h($result->id); ?>">
+                <div class="card-header">
+                    <h2 class="card-title"><?php echo h($result->full_name()); ?></h2>
+                    <h5 class="card-subtitle"><?php echo h($result->username); ?></h5>
+                </div>
+                
+                <?php if ($admin->is_admin()) { ?>
+                <div class="card-footer text-center">
+                    <a class="card-link" href="<?php echo url_for('/users/show.php?id=' . h(u($result->id))); ?>">View</a>
+                    <a class="card-link" href="<?php echo url_for('/users/edit.php?id=' . h(u($result->id))); ?>">Edit</a>
+                    <a class="card-link"
+                        href="<?php echo url_for('/users/delete.php?id=' . h(u($result->id))); ?>">Delete</a>
+                </div>
+                <?php } ?>
+            </section>
+            <!--end card-->
+        </div>
   <?php } ?>
 
 </div>

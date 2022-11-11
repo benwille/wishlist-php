@@ -1,25 +1,6 @@
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
-@font-face {
-  font-family: "Pokemon-hollow";
-  src: url("../fonts/pokemon-hollow.woff2") format("woff2"), url("../fonts/pokemon-hollow.woff") format("woff"), url("../fonts/pokemon-hollow.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: "Pokemon-solid";
-  src: url("../fonts/pokemon-solid.woff2") format("woff2"), url("../fonts/pokemon-solid.woff") format("woff"), url("../fonts/pokemon-solid.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-.pokemon-font-solid {
-  font-family: "Pokemon-solid", sans-serif;
-  letter-spacing: 2px; }
-
-.pokemon-font-hollow {
-  font-family: "Pokemon-hollow", sans-serif;
-  letter-spacing: 2px; }
 
 /*--------------------------------------------------------------
 # Header
@@ -41,10 +22,7 @@ body {
   font-family: "Lato", Roboto, "Helvetica Neue", sans-serif;
   height: 100%;
   position: relative; }
-  body.pokedex, body.home, body.login, body.logout {
-    background-image: linear-gradient(#ece3ff, #d5ddfe, #c8e0ff);
-    background-attachment: fixed;
-    min-height: 100vh; }
+  
   body.home {
     min-height: 100vh; }
     body.home .btn {
@@ -62,15 +40,6 @@ body {
       -webkit-text-stroke-width: 3px; }
       body.home .btn:hover, body.home .btn:focus {
         background-color: #ca4543; }
-  body.pokemon-single {
-    background-image: linear-gradient(#cdbde8, #8f99e7);
-    background-attachment: fixed; }
-    body.pokemon-single .pokemon-level {
-      color: #fff;
-      text-align: center;
-      text-transform: uppercase;
-      font-size: small;
-      margin-top: 1em; }
 
 #content {
   overflow: hidden;
@@ -79,9 +48,6 @@ body {
   padding-bottom: 55px;
   /* height of your footer */
   /* min-height: calc(100vh - 91px); /* will cover the 100% of viewport */ }
-
-.pokemon-card {
-  max-width: 100px; }
 
 .back-link {
   position: fixed;
@@ -107,10 +73,6 @@ body {
 .back-link svg:active {
   background-color: white; }
 
-/* .pokemon img {
-animation: Rotate 4s linear infinite;
-    transform-origin: center;
-} */
 @-webkit-keyframes Rotate {
   0%,
   100% {
@@ -128,40 +90,6 @@ animation: Rotate 4s linear infinite;
   75% {
     transform: rotateY(-20deg); } }
 
-.pokemon-single .container {
-  max-width: 45em; }
-
-.pokemon-single .pokemon {
-  padding-bottom: 50px; }
-
-.pokemon-single .pokemon h1::before {
-  content: "";
-  background-image: url("../images/pokeball-icon.svg");
-  height: 30px;
-  width: 30px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  margin: 0 0.25em; }
-
-.pokemon-pack > div:not(:last-child) {
-  border-bottom: solid 1px rgba(0, 0, 0, 0.3); }
-
-.pokemon hr {
-  width: 70%;
-  background: white; }
-
-.evolution-chain span {
-  font-size: 1.5em; }
-
-body.pokedex img.lazy {
-  height: 100px; }
-
-@media screen and (max-width: 768px) {
-  .pokemon .attributes {
-    font-size: 0.7em; }
-  body.pokedex img {
-    max-height: 50px; } }
-
 .font-weight-thin {
   font-weight: 100 !important; }
 
@@ -177,8 +105,6 @@ a.dimmed {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-.pokemon-single footer {
-  display: none; }
 
 footer {
   position: absolute;
