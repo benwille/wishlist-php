@@ -4,7 +4,10 @@
 	"description": "Starter template for a PHP/MySQL Site",
 	"main": "./html/index.php",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"setup": "gulp update-src",
+		"build": "gulp dist"
+		
 	},
 	"keywords": [
 		"PHP",
@@ -20,33 +23,35 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.10.2",
-		"autoprefixer": "^9.8.0",
-		"gulp-babel": "^8.0.0",
-		"gulp-css-purge": "^3.0.9",
-		"gulp-postcss": "^8.0.0",
-		"gulp-purgecss": "^2.1.0",
-		"gulp-remove-code": "^3.0.4",
-		"gulp-string-replace": "^1.1.2",
-		"gulp-watch": "^5.0.1",
-		"gulp-zip": "^4.1.0",
-		"merge-stream": "^2.0.0",
 		"@babel/preset-env": "^7.10.2",
+		"autoprefixer": "^9.8.0",
 		"browser-sync": "^2.26.7",
 		"del": "^4.1.1",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^6.1.0",
+		"gulp-babel": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
+		"gulp-css-purge": "^3.0.9",
 		"gulp-ignore": "^2.0.2",
 		"gulp-imagemin": "^5.0.3",
 		"gulp-plumber": "^1.2.1",
+		"gulp-postcss": "^8.0.0",
+		"gulp-purgecss": "^2.1.0",
+		"gulp-remove-code": "^3.0.4",
 		"gulp-rename": "^1.4.0",
 		"gulp-replace": "^1.0.0",
 		"gulp-rimraf": "^0.2.2",
 		"gulp-sass": "^4.1.0",
 		"gulp-sequence": "^1.0.0",
 		"gulp-sourcemaps": "^2.6.5",
+		"gulp-string-replace": "^1.1.2",
 		"gulp-uglify": "^3.0.2",
+		"gulp-watch": "^5.0.1",
+		"gulp-wp-pot": "^2.5.0",
+		"gulp-zip": "^4.1.0",
+		"jshint": "^2.13.5",
+		"merge-stream": "^2.0.0",
 		"run-sequence": "^2.2.1"
 	}
 }

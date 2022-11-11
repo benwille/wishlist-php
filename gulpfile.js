@@ -236,53 +236,6 @@ gulp.task("clean-source", function() {
 // Starts watcher with browser-sync. Browser-sync reloads page automatically on your browser
 gulp.task("watch-bs", gulp.parallel("browser-sync", "watch"));
 
-// Run:
-// gulp copy-assets.
-// Copy all needed dependency assets files from bower_component assets to themes /js, /scss and /fonts folder. Run this task after bower install or bower update
-
-////////////////// All Bootstrap SASS  Assets /////////////////////////
-gulp.task("copy-assets", function(done) {
-	////////////////// All Bootstrap 4 Assets /////////////////////////
-	// Copy all JS files
-	var stream = gulp
-		.src(`${paths.node}bootstrap/dist/js/**/*.js`)
-		.pipe(gulp.dest(`${paths.dev}/js/bootstrap4`));
-
-	// Copy all Bootstrap SCSS files
-	gulp
-		.src(`${paths.node}bootstrap/scss/**/*.scss`)
-		.pipe(gulp.dest(`${paths.dev}/sass/bootstrap4`));
-
-	////////////////// End Bootstrap 4 Assets /////////////////////////
-
-	// Copy all Font Awesome Fonts
-	gulp
-		.src(`${paths.node}font-awesome/fonts/**/*.{ttf,woff,woff2,eot,svg}`)
-		.pipe(gulp.dest("./fonts"));
-
-	// Copy all Font Awesome SCSS files
-	gulp
-		.src(`${paths.node}font-awesome/scss/*.scss`)
-		.pipe(gulp.dest(`${paths.dev}/sass/fontawesome`));
-
-	// _s SCSS files
-	gulp
-		.src(`${paths.node}undescores-for-npm/sass/media/*.scss`)
-		.pipe(gulp.dest(`${paths.dev}/sass/underscores`));
-
-	// _s JS files into /src/js
-	gulp
-		.src(`${paths.node}undescores-for-npm/js/skip-link-focus-fix.js`)
-		.pipe(gulp.dest(`${paths.dev}/js`));
-
-	// Copy all MDBootstrap SCSS files
-	gulp
-		.src(`${paths.node}mdboostrap/scss/**/*.scss`)
-		.pipe(gulp.dest(`${paths.dev}/sass/mdboostrap`));
-
-	done();
-});
-
 gulp.task("update-src", function() {
 	// Copy All Bootstrap Files
 	var bootstrapjs = gulp
