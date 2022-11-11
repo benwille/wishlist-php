@@ -1,0 +1,25 @@
+// Use this file to overwrite the basic Bootstrap variables and add your own variables
+// To overwrite a Bootstrap variable you don´t have to touch the Bootstrap folder.
+// Just copy a variable from src/sass/bootstrap4/_variables.scss, paste it here and edit the value.
+
+
+$primary:  #007bff; // Thats a sample how you could change a BootStrap variable.
+$secondary: #6c757d;
+$terciary: #F0EDEA; 
+
+// This adds 'terciary' to the theme colors
+$theme-colors: ();
+$theme-colors: map-merge(
+    (
+        "terciary": $terciary
+    ),
+    $theme-colors
+);
+ 
+$line-height-base: 1.75 !default;
+
+$font-family-sans-serif: ''; // Copy and Body Font
+$headings-font-family: ''; // Headings Font
+$font-weight-base: 300; // Base Weight
+// $line-height-base: 1.5;
+// $font-size-base: 1.1rem;
