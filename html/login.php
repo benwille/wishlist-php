@@ -25,7 +25,7 @@ if (is_post_request()) {
     if ($user != false && $user->verify_password($password)) {
       // Mark admin as logged in
       $session->login($user);
-      redirect_to(url_for('/users/pokemon.php?id=' . h(u($session->admin_id()))));
+      redirect_to(url_for('/users/show.php?id=' . h(u($session->admin_id()))));
     } else {
       // username not found or password does not match
       $errors[] = "Log in was unsuccessful.";
@@ -43,7 +43,7 @@ if (is_post_request()) {
 
 <?php echo display_errors($errors); ?>
 
-<a class="back-link" href="<?php echo url_for('/index.php'); ?>" style="bottom: 65px"><svg id="Layer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384"><title>close</title><path d="M256,64C150.13,64,64,150.13,64,256s86.13,192,192,192,192-86.13,192-192S361.87,64,256,64Zm0,352c-88.22,0-160-71.78-160-160S167.78,96,256,96s160,71.78,160,160S344.22,416,256,416Z" transform="translate(-64 -64)"/><path d="M315.31,196.69a16,16,0,0,0-22.62,0L256,233.38l-36.69-36.69a16,16,0,0,0-22.62,22.62L233.38,256l-36.69,36.69a16,16,0,1,0,22.62,22.62L256,278.62l36.69,36.69a16,16,0,0,0,22.62-22.62L278.62,256l36.69-36.69a16,16,0,0,0,0-22.62Z" transform="translate(-64 -64)"/></svg></a>
+<a class="back-link" href="<?php echo url_for('/index.php'); ?>" style="bottom: 65px"><svg id="Layer" height="25px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384"><title>close</title><path d="M256,64C150.13,64,64,150.13,64,256s86.13,192,192,192,192-86.13,192-192S361.87,64,256,64Zm0,352c-88.22,0-160-71.78-160-160S167.78,96,256,96s160,71.78,160,160S344.22,416,256,416Z" transform="translate(-64 -64)"/><path d="M315.31,196.69a16,16,0,0,0-22.62,0L256,233.38l-36.69-36.69a16,16,0,0,0-22.62,22.62L233.38,256l-36.69,36.69a16,16,0,1,0,22.62,22.62L256,278.62l36.69,36.69a16,16,0,0,0,22.62-22.62L278.62,256l36.69-36.69a16,16,0,0,0,0-22.62Z" transform="translate(-64 -64)"/></svg></a>
 
 <form action="login.php" method="post">
   <div class="form-group">
