@@ -12,3 +12,6 @@ run `npm run dev`
 
 ### Build
 run `npm run build`
+
+### Future Ideas
+- Ability to add amazon list links (or other sites) to profile

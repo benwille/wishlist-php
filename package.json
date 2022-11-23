@@ -1,19 +1,18 @@
 {
-	"name": "project-starter-template",
+	"name": "holiday-wishlist",
 	"version": "1.0.0",
-	"description": "Starter template for a PHP/MySQL Site",
+	"description": "Allow users to create wishlists for holidays and assign their secret Santa",
 	"main": "./html/index.php",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"setup": "gulp update-src",
 		"build": "gulp dist"
-		
 	},
 	"keywords": [
 		"PHP",
 		"MySQL",
-		"Starter",
-		"template"
+		"Wishlist",
+		"Holiday"
 	],
 	"author": "Ben Wille",
 	"license": "ISC",
