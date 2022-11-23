@@ -1,0 +1,42 @@
+#accordion {
+    h5:not(.collapsed) .fa-caret-right {
+        animation: Rotate 200ms linear;
+        transform: rotate(90deg);
+    }
+
+    .card-header {
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .card-body {
+        padding: 0 1.25rem;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+    
+    .table tr:first-of-type th,
+    .table tr:first-of-type td {
+        border-top: none;
+    }
+}
+
+.table tr:first-of-type th,
+.table tr:first-of-type td {
+    border-top: none;
+}
+
+@keyframes Rotate {
+
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
