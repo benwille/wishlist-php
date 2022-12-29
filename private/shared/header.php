@@ -91,7 +91,7 @@ echo '<script>console.log("' . $msg . '");</script>';
 
 	<header class="bg-success">
 		<div class="container">
-			<nav class="navbar navbar-dark navbar-expand-sm">
+			<nav class="navbar navbar-dark navbar-expand-md">
 				<div class="container">
 					<a
 						href="<?php echo url_for('/index.php'); ?>">
@@ -106,7 +106,7 @@ echo '<script>console.log("' . $msg . '");</script>';
 					</button>
 
 					<div class="collapse navbar-collapse text-right" id="myTogglerNav">
-						<div class="navbar-nav ml-3">
+						<div class="navbar-nav ml-3 w-100 flex-wrap">
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/'); ?>">Everyone's
 								Wishlist</a>
@@ -121,10 +121,12 @@ echo '<script>console.log("' . $msg . '");</script>';
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/users/show.php?id=' . h(u($session->admin_id()))); ?>">My
 								Account</a>
-							<?php if ($admin->is_admin()) {?>
+							<?php if ($admin && $admin->is_admin()) {?>
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/users/index.php'); ?>">Admin</a>
 							<?php }?>
+							<a class="nav-item nav-link ml-xl-auto"
+								href="<?php echo url_for('/logout.php'); ?>">Logout</a>
 						</div><!-- navbar-->
 
 					</div><!-- navbar -->
