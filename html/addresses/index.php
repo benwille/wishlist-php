@@ -56,6 +56,17 @@ $addresses = Address::find_all();
 						<?php echo $address->city . ", " . $address->state . " " . $address->zip;?>
 					</td>
 				</tr>
+				<?php if ($admin->is_admin()) { ?>
+				<tr class="card-footer text-center">
+					<td>
+
+						<a class="card-link"
+							href="<?php echo url_for('/addresses/edit.php?id=' . h(u($user->id))); ?>">Edit</a>
+						<a class="card-link"
+							href="<?php echo url_for('/addresses/delete.php?id=' . h(u($user->id))); ?>">Delete</a>
+					</td>
+				</tr>
+				<?php } ?>
 				<?php } ?>
 			</tbody>
 		</table>
