@@ -1,3 +1,6 @@
+#content {
+   min-height: calc(100vh - 168px); 
+}
 #accordion {
     h5:not(.collapsed) .fa-caret-right {
         animation: Rotate 200ms linear;
@@ -26,6 +29,10 @@
 .table tr:first-of-type th,
 .table tr:first-of-type td {
     border-top: none;
+}
+
+.table.wishlist td {
+    padding: 5px 10px;
 }
 
 @keyframes Rotate {
