@@ -177,15 +177,15 @@ gulp.task("browser-sync", function() {
 gulp.task("scripts", function() {
 	var scripts = [
 		// Start - All BS4 stuff
-		`${paths.src}/js/bootstrap4/bootstrap.bundle.js`,
+		// `${paths.src}/js/bootstrap4/bootstrap.bundle.js`,
 
 		// End - All BS4 stuff
 
-		`${paths.src}/js/skip-link-focus-fix.js`,
+		// `${paths.src}/js/skip-link-focus-fix.js`,
 
 		// Adding currently empty javascript file to add on for your own themes´ customizations
 		// Please add any customizations to this .js file only!
-		`${paths.src}/js/custom-javascript.js`
+		`${paths.src}/js/custom.js`
 	];
 	gulp
 		.src(scripts, { allowEmpty: true })
