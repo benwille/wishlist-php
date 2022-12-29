@@ -5,15 +5,12 @@
 
 // Find all admins
 $users = User::find_all();
-$admin = User::find_by_username($session->username);
-
 
 ?>
 <?php $page_title = 'Users'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div class="users listing">
-	<h1>Users</h1>
+<div class="users listing pt-5">
 	<?php // if ($admin->is_admin()) {?>
 	<div class="actions">
 		<a class="action"
@@ -21,10 +18,11 @@ $admin = User::find_by_username($session->username);
 			User</a>
 	</div>
 	<?php //}?>
+	<h1>Users</h1>
 	<div class="row">
 		<?php foreach ($users as $user) { ?>
 		<?php $address = Address::find_by_user($user->id);?>
-		<div class="col-sm-6 col-lg-4 col-xl-3">
+		<div class="col-sm-6 col-lg-4">
 			<section class="card mb-5"
 				id="<?php echo h($user->id); ?>">
 				<div class="card-header">
