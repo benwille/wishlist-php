@@ -6,21 +6,40 @@ require_admin();
 
 if (is_post_request()) {
     // Create record using post parameters
-    $args = $_POST['user'];
-    $user = new User($args);
-    $admin = User::find_by_username($session->username);
-    $result = $user->save();
-    // var_dump($result);
-    // die;
-    // print_r ($user->sanitized_attributes());
+    if($_POST['user']) {
+        $args = $_POST['user'];
+        $user = new User($args);
+        $result = $user->save();
+        // var_dump($result);
+        // die;
+        // print_r ($user->sanitized_attributes());
+    
+    
+        if ($result === true) {
+            $new_id = $user->id;
+            $session->message('The user was created successfully.');
+            if(!$_POST['address']) {
 
+                redirect_to(url_for('/users/show.php?id=' . $new_id));
+            }
+        } else {
+            // show errors
+        }
+    }
+    if($_POST['address']) {
+        $args = $_POST['address'];
+        $address = new Address($args);
+        $result = $address->save_address();
+        $session->message('it worked');
+        
+        // if ($result === true) {
+        //     // $new_id = $user->id;
+        //     // $session->message('The user was created successfully.');
+        //     redirect_to(url_for('/users/show.php?id=' . $new_id));
+        // } else {
+        //     // show errors
+        // }
 
-    if ($result === true) {
-        $new_id = $user->id;
-        // $session->message('The user was created successfully.');
-        redirect_to(url_for('/users/show.php?id=' . $new_id));
-    } else {
-        // show errors
     }
 } else {
     // display the form
@@ -42,15 +61,31 @@ if (is_post_request()) {
 
 	<?php echo display_errors($user->errors); ?>
 
-	<form
-		action="<?php echo url_for('/users/new.php'); ?>"
-		method="post">
+	<div class="row">
+		<div class="col-md-6">
 
-		<?php include('form_fields.php'); ?>
+			<form
+				action="<?php echo url_for('/users/new.php'); ?>"
+				method="post">
 
-		<button type="submit" class="btn btn-primary">Create User</button>
+				<?php include('form_fields.php'); ?>
 
-	</form>
+				<button type="submit" class="btn btn-primary">Edit User</button>
+
+			</form>
+
+		</div>
+		<div class="col-md-6">
+			<form
+				action="<?php echo url_for('/users/new.php'); ?>"
+				method="post">
+
+				<?php include('address_fields.php'); ?>
+
+			</form>
+            <p class="small muted ml-2">Don't see your address? Talk to the admin to get it added.</p>
+		</div>
+	</div>
 
 </div>
 

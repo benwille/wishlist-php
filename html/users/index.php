@@ -22,7 +22,7 @@ $users = User::find_all();
 	<div class="row">
 		<?php foreach ($users as $user) { ?>
 		<?php $address = Address::find_by_user($user->id);?>
-		<div class="col-sm-6 col-lg-4">
+		<div class="card-group col-sm-6 col-lg-4">
 			<section class="card mb-5"
 				id="<?php echo h($user->id); ?>">
 				<div class="card-header">
@@ -35,10 +35,12 @@ $users = User::find_all();
 				</div>
 				<div class="card-body">
 					<h5 class="card-title">Address</h5>
-					<p class="card-text">
-						<?php echo $address->street;?> <br>
-						<?php echo $address->city . ", " . $address->state . " " . $address->zip;?>
-					</p>
+					<?php if($address) { ?>
+						<p class="card-text">
+							<?php echo $address->street;?> <br>
+							<?php echo $address->city . ", " . $address->state . " " . $address->zip;?>
+						</p>
+					<?php } ?>
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item"><strong>Role: </strong>

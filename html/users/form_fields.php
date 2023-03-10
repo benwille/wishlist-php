@@ -29,7 +29,7 @@ if (!isset($user)) {
 	<input type="password" name="user[password]" value="" class="form-control" id="inputPassword">
 </div>
 <div class="form-group">
-	<label for="inputPasswordConfirm">Password</label>
+	<label for="inputPasswordConfirm">Confirm Password</label>
 	<input type="password" name="user[confirm_password]" value="" class="form-control" id="inputPasswordConfirm">
 </div>
 <?php if ($admin->is_admin()) { ?>
