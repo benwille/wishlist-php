@@ -1,6 +1,6 @@
 <?php
 
-class Wishlist extends DatabaseObject 
+class Wishlist extends DatabaseObject
 {
     protected static $table_name = "list";
     protected static $db_columns = ['id', 'item_name', 'description', 'link', 'user_id', 'year_added', 'purchased'];
@@ -23,6 +23,15 @@ class Wishlist extends DatabaseObject
         $this->purchased = $args['purchased'] ?? 0;
     }
 
+    public function purchased()
+    {
+        if ($this->purchased == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function find_by_user($user_id)
     {
         $sql = "SELECT * FROM " . static::$table_name . " ";
@@ -35,5 +44,3 @@ class Wishlist extends DatabaseObject
         }
     }
 }
-
-?>
