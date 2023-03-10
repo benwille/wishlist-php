@@ -11,8 +11,11 @@ $users = User::find_all();
 ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-
-<div id="accordion" class="pt-5">
+<div class="pt-5 text-right">
+	<button type="button" id="showAll" class="btn btn-primary btn-sm">Expand All</button>
+	<button type="button" id="hideAll" class="btn btn-secondary btn-sm">Collapse All</button>
+</div>
+<div id="accordion" class="pt-2">
 	<?php foreach ($users as $user) { ?>
 	<div class="card">
 		<div class="card-header"
@@ -65,7 +68,12 @@ $users = User::find_all();
 									<?php echo $item->year_added;?>
 								</td>
 								<?php if ($session->admin_id() !== $user->id) {?>
-								<td><input type="checkbox" aria-label="Checkbox for following text input"> gifted
+								<td><input type="checkbox" aria-label="Checkbox for following text input"
+										value="<?php echo $item->id;?>"
+										<?php if ($item->purchased()) {
+										    echo 'checked';
+										}?>>
+									gifted
 								</td>
 								<?php }?>
 							</tr>
@@ -80,3 +88,13 @@ $users = User::find_all();
 </div><!-- accordion -->
 
 <?php include(SHARED_PATH . '/footer.php'); ?>
+<script>
+	$("#showAll").click(function() {
+		$("#accordion h5.collapsed").removeClass("collapsed")
+    	$("#accordion div.collapse").addClass("show")
+	});
+	$("#hideAll").click(function() {
+		$("#accordion h5").addClass("collapsed")
+    	$("#accordion div.collapse").removeClass("show")
+	})
+</script>
