@@ -89,7 +89,7 @@ echo '<script>console.log("' . $msg . '");</script>';
 	class="<?php echo implode(", ", $page_classes); ?>"
 	<?php endif; ?>>
 
-	<header class="bg-success">
+	<header class="bg-success fixed-top">
 		<div class="container">
 			<nav class="navbar navbar-dark navbar-expand-md">
 				<div class="container">
@@ -105,8 +105,8 @@ echo '<script>console.log("' . $msg . '");</script>';
 						<span class="navbar-toggler-icon"></span>
 					</button>
 
-					<div class="collapse navbar-collapse text-right" id="myTogglerNav">
-						<div class="navbar-nav ml-3 w-100 flex-wrap">
+					<div class="collapse navbar-collapse text-right bg-success" id="myTogglerNav">
+						<div class="navbar-nav flex-wrap w-100">
 							<a class="nav-item nav-link"
 								href="<?php echo url_for('/'); ?>">Everyone's
 								Wishlist</a>
@@ -138,6 +138,6 @@ echo '<script>console.log("' . $msg . '");</script>';
 
 	</header><!-- Header Container -->
 
-	<div class="<?php echo $container ?: 'container'; ?>"
+	<div class="<?php echo $container ?: 'container'; ?> mt-5"
 		id="content">
 		<?php echo display_session_message();?>

@@ -1,0 +1,26 @@
+@include media-breakpoint-down(sm) {
+    .navbar-collapse {
+        position: fixed;
+        top: 50px;
+        right: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        width: 75%;
+        height: 100%;
+    }
+
+    .navbar-collapse.collapsing {
+        right: -75%;
+        transition: height 0s ease;
+    }
+
+    .navbar-collapse.show {
+        right: 0;
+        transition: right 300ms ease-in-out;
+    }
+
+    .navbar-toggler.collapsed~.navbar-collapse {
+        transition: right 500ms ease-in-out;
+    }
+}
