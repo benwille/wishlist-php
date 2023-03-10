@@ -9,3 +9,24 @@
     }
   });
 })(jQuery);
+(function ($) {
+  $('.home input[type=checkbox]').change(function () {
+    console.log($(this).prop('checked'));
+    var purchased;
+    if ($(this).prop('checked') === true) {
+      purchased = 1;
+    } else {
+      purchased = 0;
+    }
+    $.post("wishlist/ajax.php", {
+      item: {
+        id: $(this).val(),
+        purchased: purchased
+      }
+    }).done(function (data) {
+      console.log(data);
+      $('#accordion').before("<div id='message'>" + data + "</div>");
+      // location.reload();
+    });
+  });
+})(jQuery);
