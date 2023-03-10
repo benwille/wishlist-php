@@ -25,12 +25,14 @@ foreach ($users as $user) {
     }
 }
 
-?>
+if (!empty($match_list)) {
+    ?>
 
 <p><b><?php echo implode("</b>, <b>", $match_list);?></b>
 	already have matches.</p>
 
 <?php
+}
 
 if (empty($arr)) {
     return;
