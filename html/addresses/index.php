@@ -27,11 +27,20 @@ $addresses = Address::find_all();
 
 ?>
 
-<div class="row justify-content-center">
-	<div class="col-4">
+<div class="addresses index pt-5">
+	<?php  if ($admin->is_admin()) {?>
+	<div class="actions">
+		<a class="action"
+			href="<?php echo url_for('/addresses/new.php'); ?>">Add
+			Address</a>
+	</div>
+	<?php }?>
+	<h1>Addresses</h1>
+	<div class="row justify-content-center">
+		<div class="col-4">
 
-		<table class="table table-striped table-bordered my-5">
-			<!-- <thead>
+			<table class="table table-striped table-bordered my-5">
+				<!-- <thead>
 				<tr>
 					<th>People</th>
 					<th>Street</th>
@@ -39,40 +48,40 @@ $addresses = Address::find_all();
 					<th>Zip</th>
 				</tr>
 			</thead> -->
-			<tbody>
-				<?php foreach ($addresses as $address) {
-				    $u_id = Address::find_users_by_id($address->id);
-				    $family = [];
-				    foreach ($u_id as $u) {
-				        $user = User::find_by_id($u->user_id);
-				        $family[] = $user->full_name();
-				    } ?>
-				<tr>
-					<td><b><?php echo implode(", ", $family)?></b>
-					</td>
-				</tr>
-				<tr>
-					<td><?php echo $address->street; ?><br>
-						<?php echo $address->city . ", " . $address->state . " " . $address->zip;?>
-					</td>
-				</tr>
-				<?php if ($admin->is_admin()) { ?>
-				<tr class="card-footer text-center">
-					<td>
+				<tbody>
+					<?php foreach ($addresses as $address) {
+					    $u_id = Address::find_users_by_id($address->id);
+					    $family = [];
+					    foreach ($u_id as $u) {
+					        $user = User::find_by_id($u->user_id);
+					        $family[] = $user->full_name();
+					    } ?>
+					<tr>
+						<td><b><?php echo implode(", ", $family)?></b>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $address->street; ?><br>
+							<?php echo $address->city . ", " . $address->state . " " . $address->zip;?>
+						</td>
+					</tr>
+					<?php if ($admin->is_admin()) { ?>
+					<tr class="card-footer text-center">
+						<td>
 
-						<a class="card-link"
-							href="<?php echo url_for('/addresses/edit.php?id=' . h(u($user->id))); ?>">Edit</a>
-						<a class="card-link"
-							href="<?php echo url_for('/addresses/delete.php?id=' . h(u($user->id))); ?>">Delete</a>
-					</td>
-				</tr>
-				<?php } ?>
-				<?php } ?>
-			</tbody>
-		</table>
+							<a class="card-link"
+								href="<?php echo url_for('/addresses/edit.php?id=' . h(u($user->id))); ?>">Edit</a>
+							<a class="card-link"
+								href="<?php echo url_for('/addresses/delete.php?id=' . h(u($user->id))); ?>">Delete</a>
+						</td>
+					</tr>
+					<?php } ?>
+					<?php } ?>
+				</tbody>
+			</table>
+		</div>
+
 	</div>
 
 </div>
-
-
-<?php include(SHARED_PATH . '/footer.php'); ?>
+	<?php include(SHARED_PATH . '/footer.php'); ?>
