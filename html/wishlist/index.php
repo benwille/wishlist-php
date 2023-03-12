@@ -40,7 +40,7 @@ $list = Wishlist::find_by_user($user->id)
 			<tbody>
 				<?php foreach ($list as $item) { ?>
 				<tr>
-					<td scope="row">
+					<td scope="row" class="col">
 						<?php if ($item->link) { ?>
 						<a href="<?php echo $item->link; ?>"
 							target="_blank"

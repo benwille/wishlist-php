@@ -37,7 +37,7 @@ $addresses = Address::find_all();
 	<?php }?>
 	<h1>Addresses</h1>
 	<div class="row justify-content-center">
-		<div class="col-4">
+		<div class="col-md-8 col-xl-4">
 
 			<table class="table table-striped table-bordered my-5">
 				<!-- <thead>
