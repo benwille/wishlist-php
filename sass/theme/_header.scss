@@ -1,4 +1,15 @@
+.wordmark {
+    display: none;
+}
+
+#message {
+    padding-top: 3rem;
+}
 @include media-breakpoint-down(sm) {
+    .wordmark {
+        max-width: 100px;
+        display: inline;
+    }
     .navbar-collapse {
         position: fixed;
         top: 50px;

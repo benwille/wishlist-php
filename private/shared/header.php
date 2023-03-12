@@ -20,7 +20,7 @@ echo '<script>console.log("' . $msg . '");</script>';
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400&display=swap" rel="stylesheet"> -->
 	<link rel="stylesheet" media="all"
 		href="<?php echo url_for('/css/theme.min.css'); ?>" />
 	<link rel="shortcut icon"
@@ -33,8 +33,8 @@ echo '<script>console.log("' . $msg . '");</script>';
 		href="<?php echo url_for('/images/apple-touch-icon.png'); ?>">
 	<link rel="apple-touch-icon" size="152x152"
 		href="<?php echo url_for('/images/apple-touch-icon-ipad.png'); ?>">
-	<link rel='manifest' href='/manifest.json'>
-	<meta name="theme-color" content="#ef5350">
+	<!-- <link rel='manifest' href='/manifest.json'> -->
+	<meta name="theme-color" content="#0E6836">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta rel="apple-touch-startup-image"
@@ -96,38 +96,40 @@ echo '<script>console.log("' . $msg . '");</script>';
 					<a
 						href="<?php echo url_for('/index.php'); ?>">
 						<img class="wordmark"
-							src="<?php //TODO: echo url_for('')?>"
+							src="<?php echo url_for('/images/holiday-wishlist-logo-square.png')?>"
 							alt="" />
 					</a>
+					<?php if($session->is_logged_in()) { ?>
 
-					<button class="navbar-toggler mb-2" type="button" data-toggle="collapse" data-target="#myTogglerNav"
-						aria-controls="myTogglerNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-
-					<div class="collapse navbar-collapse text-right bg-success" id="myTogglerNav">
-						<div class="navbar-nav flex-wrap w-100">
-							<a class="nav-item nav-link"
-								href="<?php echo url_for('/'); ?>">Everyone's
-								Wishlist</a>
-							<a class="nav-item nav-link"
-								href="<?php echo url_for('/wishlist/?id=' . h(u($session->admin_id()))); ?>">My
-								Wishlist</a>
-							<a class="nav-item nav-link"
-								href="<?php echo url_for('/exchange/index.php'); ?>">Gift
-								Exchange</a>
-							<a class="nav-item nav-link"
-								href="<?php echo url_for('/addresses/index.php'); ?>">Addresses</a>
-							<a class="nav-item nav-link"
-								href="<?php echo url_for('/users/show.php?id=' . h(u($session->admin_id()))); ?>">My
-								Account</a>
-							<?php if ($admin && $admin->is_admin()) {?>
-							<a class="nav-item nav-link"
-								href="<?php echo url_for('/users/index.php'); ?>">Admin</a>
-							<?php }?>
-							<a class="nav-item nav-link ml-xl-auto"
-								href="<?php echo url_for('/logout.php'); ?>">Logout</a>
-						</div><!-- navbar-->
+						<button class="navbar-toggler mb-2" type="button" data-toggle="collapse" data-target="#myTogglerNav"
+							aria-controls="myTogglerNav" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+	
+						<div class="collapse navbar-collapse text-right bg-success" id="myTogglerNav">
+							<div class="navbar-nav flex-wrap w-100">
+								<a class="nav-item nav-link"
+									href="<?php echo url_for('/'); ?>">Everyone's
+									Wishlist</a>
+								<a class="nav-item nav-link"
+									href="<?php echo url_for('/wishlist/?id=' . h(u($session->admin_id()))); ?>">My
+									Wishlist</a>
+								<a class="nav-item nav-link"
+									href="<?php echo url_for('/exchange/index.php'); ?>">Gift
+									Exchange</a>
+								<a class="nav-item nav-link"
+									href="<?php echo url_for('/addresses/index.php'); ?>">Addresses</a>
+								<a class="nav-item nav-link"
+									href="<?php echo url_for('/users/show.php?id=' . h(u($session->admin_id()))); ?>">My
+									Account</a>
+								<?php if ($admin && $admin->is_admin()) {?>
+								<a class="nav-item nav-link"
+									href="<?php echo url_for('/users/index.php'); ?>">Admin</a>
+								<?php }?>
+								<a class="nav-item nav-link ml-xl-auto"
+									href="<?php echo url_for('/logout.php'); ?>">Logout</a>
+							</div><!-- navbar-->
+					<?php } ?>
 
 					</div><!-- navbar -->
 				</div><!--container-->
@@ -138,6 +140,9 @@ echo '<script>console.log("' . $msg . '");</script>';
 
 	</header><!-- Header Container -->
 
-	<div class="<?php echo $container ?: 'container'; ?> mt-5"
+	<div class="<?php echo $container ?: 'container'; ?> mt-5 pt-5"
 		id="content">
+		<!-- <div id="logo-h" class="d-flex justify-content-center pt-5">
+			<img class="img-fluid mt-5" src="<?php // echo url_for('/images/holiday-wishlist-logo.png')?>">
+		</div> -->
 		<?php echo display_session_message();?>
