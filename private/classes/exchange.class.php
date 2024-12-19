@@ -10,7 +10,7 @@ class Exchange extends DatabaseObject
     public $user_id;
     public $match_id;
 
-    public function __construct($args=[])
+    public function __construct($args = [])
     {
         $this->year = $args['year'] ?? date('Y');
         $this->user_id = $args['user_id'] ?? '';
@@ -61,6 +61,16 @@ class Exchange extends DatabaseObject
             $years[] = $r->year;
         }
         return $years;
+    }
+
+    public static function resetAssignments($year)
+    {
+
+        $stmt = self::$database->prepare("DELETE FROM exchange WHERE year = ?");
+        $stmt->bind_param("i", self::$database->escape_string($year));
+        $result = $stmt->execute();
+        return $result;
+
     }
 
     public function get_name($id)

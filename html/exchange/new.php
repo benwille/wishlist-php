@@ -5,6 +5,7 @@
 
 // Find all admins
 $users = User::find_all();
+$people = User::get_people($users);
 
 $year = date('Y');
 
@@ -12,6 +13,8 @@ $exchange = Exchange::find_by_year($year);
 
 if (is_post_request()) {
     // Create record using post parameters
+    $reset = Exchange::resetAssignments($year);
+    
     $args = $_POST['exchange'];
     var_dump($args);
     $year = '';
@@ -56,9 +59,9 @@ if (is_post_request()) {
 					<?php include('form_fields.php');?>
 
 				</table>
-				<?php if (!empty($arr)) { ?>
+				<?php // if (!empty($arr)) {?>
 				<button type="submit" class="btn btn-primary">Submit Names</button>
-				<?php } ?>
+				<?php // }?>
 			</form>
 		</div>
 

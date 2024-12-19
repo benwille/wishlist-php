@@ -28,11 +28,11 @@ $years = Exchange::find_all_years();
 	<div class="row pt-5 justify-content-center">
 
 		<?php
-        $x=1;
+        $x = 1;
 foreach ($years as $year) {
     echo '<a href="' . url_for("/exchange/show.php?year=" . $year) . '">' . $year . '</a> ';
     if ($x < count($years)) {
-        echo ' | ';
+        echo '&nbsp;|&nbsp;';
     }
     $x++;
 } ?>

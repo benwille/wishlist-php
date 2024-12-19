@@ -15,10 +15,15 @@ class User extends DatabaseObject
     public $password;
     public $confirm_password;
     protected $password_required = true;
-    protected $type;
+    public $type;
     protected $is_admin = false;
 
-    public function __construct($args=[])
+    public const TYPE = [
+        1 => 'Adult',
+        2 => 'Child'
+    ];
+
+    public function __construct($args = [])
     {
         $this->first_name = $args['first_name'] ?? '';
         $this->last_name = $args['last_name'] ?? '';
@@ -128,6 +133,52 @@ class User extends DatabaseObject
         }
     }
 
+    public static function get_people($users)
+    {
+
+        $people = [];
+        foreach ($users as $user) {
+            $people[] = $user->id;
+        }
+        shuffle($people);
+        return $people;
+
+    }
+
+    public static function isValidAssignment($assigner, $assignee, $conn, $currentYear)
+    {
+
+        $stmt = $conn->prepare("SELECT * FROM no_pair WHERE (person1 = ? AND person2 = ?) OR (person1 = ? AND person2 = ?)");
+        $stmt->bind_param("ssss", $assigner, $assignee, $assignee, $assigner);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            return false;
+        }
+
+
+        $stmt = $conn->prepare("
+            SELECT * FROM exchange 
+            WHERE user_id = ? AND match_id = ?
+            AND year >= ?
+        ");
+        $thresholdYear = $currentYear - 2;
+        $stmt->bind_param("ssi", $assigner, $assignee, $thresholdYear);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows === 0;
+
+    }
+
+    public function type()
+    {
+        if ($this->type > 0) {
+            return self::TYPE[ $this->type ];
+        } else {
+            return 'Unknown';
+        }
+    }
+
     public function is_admin()
     {
         if ($this->is_admin == 1) {
@@ -136,4 +187,6 @@ class User extends DatabaseObject
             return false;
         }
     }
+
+
 }

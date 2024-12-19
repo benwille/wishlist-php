@@ -1,6 +1,6 @@
 {
 	"name": "holiday-wishlist",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Allow users to create wishlists for holidays and assign their secret Santa",
 	"main": "./html/index.php",
 	"scripts": {
