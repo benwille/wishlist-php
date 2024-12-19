@@ -5,6 +5,7 @@
 
 // Find all admins
 $users = User::find_all();
+$people = User::get_people($users);
 
 $year = date('Y');
 
