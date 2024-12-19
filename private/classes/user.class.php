@@ -15,10 +15,15 @@ class User extends DatabaseObject
     public $password;
     public $confirm_password;
     protected $password_required = true;
-    protected $type;
+    public $type;
     protected $is_admin = false;
 
-    public function __construct($args=[])
+    public const TYPE = [
+        1 => 'Adult',
+        2 => 'Child'
+    ];
+
+    public function __construct($args = [])
     {
         $this->first_name = $args['first_name'] ?? '';
         $this->last_name = $args['last_name'] ?? '';
@@ -182,4 +187,6 @@ class User extends DatabaseObject
             return false;
         }
     }
+
+
 }

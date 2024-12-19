@@ -33,6 +33,23 @@ if (!isset($user)) {
 	<input type="password" name="user[confirm_password]" value="" class="form-control" id="inputPasswordConfirm">
 </div>
 <?php if ($admin->is_admin()) { ?>
+
+<div class="form-group">
+	<label for="type">Type</label>
+	<select class="form-control" id="type" name="user[type]">
+		<option value=""></option>
+		<?php
+    foreach (User::TYPE as $type_id => $type_name) {
+        ?>
+		<option value="<?php echo $type_id; ?>" <?php
+                                if ($user->type == $type_id) {
+                                    echo 'selected';
+                                }
+        ?>
+			><?php echo $type_name; ?></option>
+		<?php } ?>
+	</select>
+</div>
 <div class="form-group form-check">
 	<input type="hidden" name="user[is_admin]" value="0" />
 	<input type="checkbox" name="user[is_admin]" value="1" <?php if ($user->is_admin()) {
