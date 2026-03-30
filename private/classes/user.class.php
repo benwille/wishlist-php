@@ -20,7 +20,8 @@ class User extends DatabaseObject
 
     public const TYPE = [
         1 => 'Adult',
-        2 => 'Child'
+        2 => 'Child',
+        3 => 'Guest'
     ];
 
     public function __construct($args = [])
@@ -119,6 +120,15 @@ class User extends DatabaseObject
         }
 
         return $this->errors;
+    }
+
+    public static function find_all_exchange()
+    {
+        $sql = "SELECT * FROM " . static::$table_name . " ";
+
+        $sql .= "WHERE type='1'";
+
+        return static::find_by_sql($sql);
     }
 
     public static function find_by_username($username)

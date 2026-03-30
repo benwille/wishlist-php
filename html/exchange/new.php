@@ -4,7 +4,7 @@
 <?php
 
 // Find all admins
-$users = User::find_all();
+$users = User::find_all_exchange();
 $people = User::get_people($users);
 
 $year = date('Y');
