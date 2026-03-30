@@ -25,6 +25,11 @@ run `npm run build`
 - Add people who can be viewers only. They can add their items but can't be part of the exchange
 - Make it multi-group or multi-family and make your wishlist of items carry across if you are in multiple groups
 
+## Deployment
+Pushes to `main` trigger a GitHub Actions workflow that rsyncs `html/` and `private/` to the Raspberry Pi. The Pi's `db_credentials.php` and `initialize.php` are excluded (Pi-specific config).
+
+**Note:** The build tooling (`node-sass`, Gulp) is outdated and doesn't run in CI. Compiled CSS/JS are committed directly. To modernize, replace `node-sass` with `sass` (Dart Sass) in package.json and verify the Gulp pipeline still works.
+
 ## Troubleshooting
 There are some common issues when installing this on your server.
 1. Wrong database credentials

@@ -6,46 +6,13 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  deploy:
+    name: Deploy to Raspberry Pi
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Setup source assets
-        run: npm run setup
-
-      - name: Build site
-        run: npm run build
-
-      - name: Upload dist artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-  deploy:
-    name: Deploy to Raspberry Pi
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Download dist artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
 
       - name: Install rsync and SSH client
         run: sudo apt-get update && sudo apt-get install -y rsync openssh-client
@@ -63,4 +30,7 @@ jobs:
           rsync -avz --delete --no-perms --no-times --omit-dir-times \
             --exclude='private/db_credentials.php' \
             --exclude='private/initialize.php' \
-            dist/ "${{ secrets.PI_USER }}@${{ secrets.PI_HOST }}:${{ secrets.PI_PATH }}"
+            --include='html/***' \
+            --include='private/***' \
+            --exclude='*' \
+            ./ "${{ secrets.PI_USER }}@${{ secrets.PI_HOST }}:${{ secrets.PI_PATH }}"
